@@ -1,0 +1,28 @@
+﻿[package]
+name = "taiko_tja_rust"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "taiko_tja_rust"
+crate-type = ["cdylib"]
+
+[dependencies]
+macroquad = "0.4"
+rodio = "0.19"
+resvg = "0.44"
+tiny-skia = "0.11"
+encoding_rs = "0.8"
+
+[target.'cfg(not(target_os = "android"))'.dependencies]
+rfd = "0.14"
+
+[package.metadata.android]
+package_name = "com.taiko.tjaloader"
+label = "Taiko TJA"
+assets = "assets"
+fullscreen = true
+android_version = 34
+target_sdk_version = 34
+min_sdk_version = 26
+build_targets = ["aarch64-linux-android"]

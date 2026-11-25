@@ -1,0 +1,46 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Instalar Rust y target ARM64
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android
+
+      - name: Configurar Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Configurar Android SDK y NDK
+        uses: android-actions/setup-android@v3
+
+      - name: Instalar NDK y Build Tools
+        run: |
+          sdkmanager "ndk;26.3.11579264" "build-tools;34.0.0" "platforms;android-34"
+
+      - name: Instalar cargo-apk
+        run: cargo install cargo-apk
+
+      - name: Compilar APK
+        env:
+          ANDROID_HOME: ${{ env.ANDROID_HOME }}
+          ANDROID_NDK_ROOT: ${{ env.ANDROID_HOME }}/ndk/26.3.11579264
+        run: cargo apk build --release --target aarch64-linux-android
+
+      - name: Subir APK como Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tjaloader-apk
+          path: target/release/apk/*.apk
