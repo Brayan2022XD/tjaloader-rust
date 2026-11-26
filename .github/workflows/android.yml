@@ -42,6 +42,7 @@ jobs:
         env:
           ANDROID_HOME: /usr/local/lib/android/sdk
           ANDROID_NDK_ROOT: /usr/local/lib/android/sdk/ndk/26.3.11579264
+          CARGO_TARGET_AARCH64_LINUX_ANDROID_RUSTFLAGS: "-Clink-arg=-lc++abi"
         run: cargo apk build --release --target aarch64-linux-android
 
       - name: Subir APK como Artifact
