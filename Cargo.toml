@@ -1,11 +1,11 @@
-﻿[package]
+[package]
 name = "taiko_tja_rust"
 version = "0.1.0"
 edition = "2021"
 
 [lib]
 name = "taiko_tja_rust"
-crate-type = ["rlib", "cdylib"]
+crate-type = ["cdylib"]
 
 [dependencies]
 macroquad = "0.4"
@@ -32,7 +32,3 @@ path = "/tmp/release.keystore"
 alias = "tjaloader"
 keystore_password = "android_keystore_password"
 key_password = "android_key_password"
-
-[[bin]]
-name = "taiko_tja_rust"
-path = "src/main.rs"
