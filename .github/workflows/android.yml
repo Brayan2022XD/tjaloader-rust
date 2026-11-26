@@ -65,7 +65,7 @@ jobs:
           export ANDROID_HOME="$SDK_DIR"
           export ANDROID_NDK_ROOT="$SDK_DIR/ndk/26.3.11579264"
 
-          cargo apk build --release --target aarch64-linux-android
+          cargo apk build --release --lib --target aarch64-linux-android
 
       - name: Subir APK como Artifact
         uses: actions/upload-artifact@v4
