@@ -30,6 +30,7 @@ jobs:
           yes | "$CMDLINE_BIN" --sdk_root="$SDK_DIR" --licenses > /dev/null 2>&1 || true
           yes | "$CMDLINE_BIN" --sdk_root="$SDK_DIR" \
             "platform-tools" \
+            "platforms;android-30" \
             "platforms;android-34" \
             "build-tools;34.0.0" \
             "ndk;26.3.11579264"
