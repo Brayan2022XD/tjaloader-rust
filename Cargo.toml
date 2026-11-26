@@ -26,3 +26,9 @@ android_version = 34
 target_sdk_version = 34
 min_sdk_version = 26
 build_targets = ["aarch64-linux-android"]
+
+[package.metadata.android.signing.release]
+path = "/tmp/release.keystore"
+alias = "tjaloader"
+keystore_password = "android_keystore_password"
+key_password = "android_key_password"
