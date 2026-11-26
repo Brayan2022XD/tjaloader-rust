@@ -52,6 +52,16 @@ jobs:
             chmod +x "$NDK_BIN/clang"
           fi
 
+          keytool -genkeypair \
+            -keystore /tmp/release.keystore \
+            -alias tjaloader \
+            -keyalg RSA \
+            -keysize 2048 \
+            -validity 10000 \
+            -storepass android_keystore_password \
+            -keypass android_key_password \
+            -dname "CN=Brayan, OU=Dev, O=TJALoader, L=Coronel, S=BioBio, C=CL"
+
           export ANDROID_HOME="$SDK_DIR"
           export ANDROID_NDK_ROOT="$SDK_DIR/ndk/26.3.11579264"
 
