@@ -28,7 +28,7 @@ jobs:
           SDK_DIR="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
           CMDLINE_BIN=$(find "$SDK_DIR/cmdline-tools" -name sdkmanager -type f | head -n 1)
           yes | "$CMDLINE_BIN" --sdk_root="$SDK_DIR" --licenses > /dev/null 2>&1 || true
-          yes | "$CMDLINE_BIN" --sdk_root="$SDK_DIR" --install_root="$SDK_DIR" \
+          yes | "$CMDLINE_BIN" --sdk_root="$SDK_DIR" \
             "platform-tools" \
             "platforms;android-34" \
             "build-tools;34.0.0" \
